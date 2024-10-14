@@ -1,22 +1,25 @@
-function NextQuestion({ disPath, answer, numQuestion, index }) {
+import { useQuize } from "../context/QuizContext";
+
+function NextQuestion() {
+  const { dispath, answer, numQuestions, index } = useQuize();
   if (answer === null) return null;
-  if (index < numQuestion - 1) {
+  if (index < numQuestions - 1) {
     return (
       <div>
         <button
           className="btn btn-ui"
-          onClick={() => disPath({ type: "nextQuestion" })}
+          onClick={() => dispath({ type: "nextQuestion" })}
         >
           Next
         </button>
       </div>
     );
   }
-  if (index === numQuestion - 1) {
+  if (index === numQuestions - 1) {
     return (
       <button
         className="btn btn-ui"
-        onClick={() => disPath({ type: "finish" })}
+        onClick={() => dispath({ type: "finish" })}
       >
         Finish
       </button>

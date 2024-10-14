@@ -1,4 +1,7 @@
-function Option({ question, disPath, answer }) {
+import { useQuize } from "../context/QuizContext";
+
+function Option({ question }) {
+  const { dispath, answer } = useQuize();
   const hasAnswer = answer !== null;
   return (
     <div className="options">
@@ -9,10 +12,10 @@ function Option({ question, disPath, answer }) {
               ? index === question.correctOption
                 ? "correct"
                 : "wrong"
-              : " "
+              : ""
           }`}
           key={option}
-          onClick={() => disPath({ type: "newAnswer", payload: index })}
+          onClick={() => dispath({ type: "newAnswer", payload: index })}
           disabled={hasAnswer}
         >
           {option}

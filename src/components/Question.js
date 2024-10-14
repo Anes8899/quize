@@ -1,12 +1,15 @@
+import { useQuize } from "../context/QuizContext";
 import Option from "./Option";
 
-function Question({ question, disPath, answer }) {
+function Question() {
+  const { questions, index } = useQuize();
+  const question = questions.at(index);
   console.log(question);
 
   return (
     <div>
       <h4>{question.question}</h4>
-      <Option answer={answer} question={question} disPath={disPath} />
+      <Option question={question} />
     </div>
   );
 }
